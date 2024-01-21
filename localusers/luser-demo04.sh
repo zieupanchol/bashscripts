@@ -11,6 +11,8 @@ read -p "Enter real name for the person whose this account is for: " COMMENT
 read -p "Enter a password for this account: " PASSWORD
 # Create the user.
 sudo useradd -c "$COMMENT" -m $USER_NAME
+# Generate a better password using date/time and cryptographic hash function.
+PASSWORD=$(date +%S%N${RANDOM}${RANDOM} | sha256sum | head -c48)
 # Set password for the user.
 echo ${PASSWORD} | passwd --stdin ${USER_NAME}
 # Force password change on first login

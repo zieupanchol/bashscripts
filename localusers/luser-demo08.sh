@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# This script backup file.
 log() {
 	# This function sned messages to syslog and to standard ouput if verbose is set to true.
 	local MESSAGE="${@}"
