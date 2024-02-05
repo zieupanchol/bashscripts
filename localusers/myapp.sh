@@ -18,9 +18,9 @@ APPUSER=myappuser
 
 # Check to see if the above command succeeded.
 if [ "${?}" -eq 0 ]; then
-    echo "nodejs was succfully installed"
+    echo "node, npm, curl, wget, net-tools were succfully installed"
 else
-    echo "nodejs failed to install"
+    echo "all or one of the tools failed to install"
     exit 1
 fi
 # read user input for log directory
@@ -54,6 +54,9 @@ runuser -l $APPUSER -c "wget https://node-envvars-artifact.s3.eu-west-2.amazonaw
 
 # extract the project archive to ./package folder
 runuser -l $APPUSER -c "tar zxvf ./bootcamp-node-envvars-project-1.0.0.tgz"
+
+# Clean up: remove the downloaded archive
+rm bootcamp-node-envvars-project-1.0.0.tgz
 
 # start the nodejs application in the background, with all needed env vars with new user myapp
 runuser -l $APPUSER -c "
